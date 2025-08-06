@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour {
 
     //Rotation and look
     private float xRotation;
-    private float sensitivity = 50f;
+    private float sensitivity = 100f;
     private float sensMultiplier = 1f;
     
     //Movement
@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour {
     //Jumping
     private bool readyToJump = true;
     private float jumpCooldown = 0.25f;
-    public float jumpForce = 550f;
+    public float jumpForce = 5f;
     
     //Input
     float x, y;
@@ -131,8 +131,8 @@ public class PlayerMovement : MonoBehaviour {
         
         // Movement in air
         if (!grounded) {
-            multiplier = 0.5f;
-            multiplierV = 0.5f;
+            multiplier = 0.75f;
+            multiplierV = 0.75f;
         }
         
         // Movement while sliding
