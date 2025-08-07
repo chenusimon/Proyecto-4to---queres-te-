@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour {
     private Rigidbody rb;
 
     //Rotation and look
-    private float xRotation;
+    private float xRotation;                      //tengo que importar esto al balaScript.cs
     private float sensitivity = 100f;
     private float sensMultiplier = 1f;
     
