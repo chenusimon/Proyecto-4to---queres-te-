@@ -6,17 +6,13 @@ public class DispararBala : MonoBehaviour
 {
     public GameObject prefabBala;
     public Transform puntoDeDisparo;
+    public float velocidad = 10f;
 
-    public void Shoot(float xRotation)
+
+    public void Shoot(float xRotation, float yRotation)
     {
-
-        // Crear la rotación en X (inclinación vertical)
-        Quaternion rotacion = Quaternion.Euler(xRotation, 0, 0);
-
-        // Instanciar la bala con la rotación especificada
+        Quaternion rotacion = Quaternion.Euler(xRotation, yRotation, 0);        
         GameObject bala = Instantiate(prefabBala, puntoDeDisparo.position, rotacion);
-
-        // Aplicar velocidad si la bala tiene Rigidbody
         Rigidbody rb = bala.GetComponent<Rigidbody>();
         if (rb != null)
         {

@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour {
     private Rigidbody rb;
 
     //Rotation and look
-    private float xRotation;                      //tengo que importar esto al balaScript.cs
+    private float xRotation;
     private float sensitivity = 100f;
     private float sensMultiplier = 1f;
     
@@ -68,7 +68,7 @@ public class PlayerMovement : MonoBehaviour {
         Look();
         if (Input.GetMouseButtonDown(0))
         {
-            DispararBala.Shoot(xRotation);
+            DispararBala.Shoot(xRotation, orientation.transform.eulerAngles.y);
         }
     }
 
