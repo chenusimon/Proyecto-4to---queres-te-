@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
+    public DispararBala DispararBala;
+
     //Assingables
     public Transform playerCam;
     public Transform orientation;
@@ -64,6 +66,10 @@ public class PlayerMovement : MonoBehaviour {
     private void Update() {
         MyInput();
         Look();
+        if (Input.GetMouseButtonDown(0))
+        {
+            DispararBala.Shoot(xRotation);
+        }
     }
 
     /// <summary>

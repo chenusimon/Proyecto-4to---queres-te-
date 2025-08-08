@@ -1,18 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BalaScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+    float velocidad = 3f;
+    private Rigidbody rb;
+
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
+        rb.velocity = transform.forward * velocidad;
     }
-
-    // Update is called once per frame
-    void Update()
+    public void OnCollisionEnter(Collision collision)
     {
-        
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            SceneManager.LoadScene("SampleScene");
+        }
     }
 }
