@@ -9,7 +9,17 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Plane
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cuadros
+    second: {fileID: 2100000, guid: e93e2c6b21b590044a8deb398adc585e, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: a
+    second: {fileID: 2800000, guid: 1eb8f1676c330264b8119f8955e6a351, type: 3}
   materials:
     importMaterials: 1
     materialName: 0
