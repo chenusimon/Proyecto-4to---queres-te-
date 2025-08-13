@@ -2,6 +2,7 @@
 
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour {
 
@@ -20,20 +21,20 @@ public class PlayerMovement : MonoBehaviour {
     private float sensMultiplier = 1f;
     
     //Movement
-    public float moveSpeed = 4500;
-    public float maxSpeed = 20;
+    public float moveSpeed = 100000f;
+    public float maxSpeed = 30f;
     public bool grounded;
     public LayerMask whatIsGround;
     
     public float counterMovement = 0.175f;
     private float threshold = 0.01f;
-    public float maxSlopeAngle = 35f;
+    public float maxSlopeAngle = 40f;
 
     //Crouch & Slide
     private Vector3 crouchScale = new Vector3(1, 0.5f, 1);
     private Vector3 playerScale;
-    public float slideForce = 400;
-    public float slideCounterMovement = 0.2f;
+    public float slideForce = 500;
+    public float slideCounterMovement = 0.01f;
 
     //Jumping
     private bool readyToJump = true;
@@ -70,6 +71,11 @@ public class PlayerMovement : MonoBehaviour {
         {
             DispararBala.Shoot(xRotation, orientation.transform.eulerAngles.y);
         }
+        if (Input.GetMouseButtonDown(1))
+        {
+            SceneManager.LoadScene("SampleScene");
+        }
+
     }
 
     /// <summary>

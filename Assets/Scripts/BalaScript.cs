@@ -12,6 +12,11 @@ public class BalaScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             SceneManager.LoadScene("SampleScene");
+            Destroy(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 }

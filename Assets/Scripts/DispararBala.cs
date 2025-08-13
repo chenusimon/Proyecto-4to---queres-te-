@@ -6,7 +6,7 @@ public class DispararBala : MonoBehaviour
 {
     public GameObject prefabBala;
     public Transform puntoDeDisparo;
-     float velocidad = 15f;
+    float velocidad = 40f;
 
 
     public void Shoot(float xRotation, float yRotation)
