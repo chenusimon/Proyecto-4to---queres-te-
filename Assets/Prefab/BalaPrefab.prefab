@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3899624601307561606}
   m_Layer: 0
   m_Name: BalaPrefab
-  m_TagString: Untagged
+  m_TagString: bala
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,6 +85,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: d2e7e78248bc43a4989a25e25e6f959d, type: 3}
       propertyPath: m_Name
+      value: bala
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d2e7e78248bc43a4989a25e25e6f959d, type: 3}
+      propertyPath: m_TagString
       value: bala
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d2e7e78248bc43a4989a25e25e6f959d, type: 3}

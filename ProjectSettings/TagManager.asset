@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - enemigo
+  - bala
   layers:
   - Default
   - TransparentFX
