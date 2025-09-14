@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-
     public DispararBala DispararBala;
+    private int arma = 1;
 
     //Assingables
     public Transform playerCam;
@@ -70,11 +70,21 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            arma = 2;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            arma = 1;
+        }
+
         MyInput();
         Look();
         if (Input.GetMouseButtonDown(0))
         {
-            DispararBala.Shoot(xRotation, orientation.transform.eulerAngles.y);
+            DispararBala.Shoot(xRotation, orientation.transform.eulerAngles.y, arma);
         }
         if (Input.GetMouseButtonDown(1))
         {
