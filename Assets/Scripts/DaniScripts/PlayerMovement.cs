@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask whatIsGround;
 
     public float counterMovement = 0.175f;
+    public float airCounterMultiplier = 0.1f;
     private float threshold = 0.01f;
     public float maxSlopeAngle = 40f;
 
@@ -40,7 +41,9 @@ public class PlayerMovement : MonoBehaviour
     //Jumping
     private bool readyToJump = true;
     private float jumpCooldown = 0.25f;
-    private float jumpForce = 1000f;
+    private float jumpForce = 2000f;
+    public float extraFallForce = 20f;
+    private bool jumped = false;
 
     //Input
     float x, y;
@@ -90,7 +93,10 @@ public class PlayerMovement : MonoBehaviour
         {
             SceneManager.LoadScene("SampleScene");
         }
-
+        if (grounded == true)
+        {
+            jumped = false;
+        }
     }
 
     private void MyInput()
@@ -136,16 +142,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Movement()
     {
-        //Extra gravity
         if (Vector3.Angle(normalVector, Vector3.up) < maxSlopeAngle)
         {
-            rb.AddForce(Vector3.down * Time.deltaTime * 10);
+            rb.AddForce(Vector3.down * Time.deltaTime * 20);
         }
 
-        //Input y dirección
         Vector3 moveDir = orientation.transform.forward * y + orientation.transform.right * x;
 
-        //Multiplicador según pendiente
         float slopeMultiplier = 1.2f;
         if (grounded)
         {
@@ -162,13 +165,22 @@ public class PlayerMovement : MonoBehaviour
 
         if (readyToJump && jumping) Jump();
 
+        if (rb.velocity.y < 0)
+        {
+            rb.AddForce(Vector3.down * extraFallForce, ForceMode.Acceleration);
+        }
+
+        if (!grounded && !jumped)
+        {
+            rb.AddForce(Vector3.down * 500f, ForceMode.Acceleration);
+        }
+
         float effectiveMaxSpeed = maxSpeed;
         if (crouching || normalVector != Vector3.up) effectiveMaxSpeed = float.MaxValue;
 
         Vector2 mag = FindVelRelativeToLook();
         CounterMovement(x, y, mag, effectiveMaxSpeed);
 
-        //Sliding down ramp: solo aplicar velocidad extra si estás agachado
         if (crouching && grounded && readyToJump)
         {
             rb.AddForce(Vector3.down * Time.deltaTime * 3000);
@@ -192,6 +204,7 @@ public class PlayerMovement : MonoBehaviour
 
             rb.AddForce(Vector2.up * jumpForce * 1.5f);
             rb.AddForce(normalVector * jumpForce * 0.5f);
+            jumped = true;
 
             Vector3 vel = rb.velocity;
             if (rb.velocity.y < 0.5f)
@@ -226,8 +239,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void CounterMovement(float x, float y, Vector2 mag, float effectiveMaxSpeed)
     {
-        if (!grounded || jumping) return;
-
         if (crouching)
         {
             rb.AddForce(moveSpeed * Time.deltaTime * -rb.velocity.normalized * slideCounterMovement);
@@ -236,11 +247,13 @@ public class PlayerMovement : MonoBehaviour
 
         if (Math.Abs(mag.x) > threshold && Math.Abs(x) < 0.05f || (mag.x < -threshold && x > 0) || (mag.x > threshold && x < 0))
         {
-            rb.AddForce(moveSpeed * orientation.transform.right * Time.deltaTime * -mag.x * counterMovement);
+            float multiplier = grounded ? 1f : airCounterMultiplier;
+            rb.AddForce(moveSpeed * orientation.transform.right * Time.deltaTime * -mag.x * counterMovement * multiplier);
         }
         if (Math.Abs(mag.y) > threshold && Math.Abs(y) < 0.05f || (mag.y < -threshold && y > 0) || (mag.y > threshold && y < 0))
         {
-            rb.AddForce(moveSpeed * orientation.transform.forward * Time.deltaTime * -mag.y * counterMovement);
+            float multiplier = grounded ? 1f : airCounterMultiplier;
+            rb.AddForce(moveSpeed * orientation.transform.forward * Time.deltaTime * -mag.y * counterMovement * multiplier);
         }
 
         if (Mathf.Sqrt((Mathf.Pow(rb.velocity.x, 2) + Mathf.Pow(rb.velocity.z, 2))) > effectiveMaxSpeed)

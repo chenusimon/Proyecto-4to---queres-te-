@@ -26,19 +26,22 @@ public class AgentManager : MonoBehaviour
     {
         agent.destination = targetTR.position;
         anim.SetFloat("speed", agent.velocity.magnitude);
-        lookAngleY = transform.eulerAngles.y;
-        lookAngleX = transform.eulerAngles.x;
 
+        // Dirección completa hacia el target (incluye altura)
         Vector3 direction = (targetTR.position - transform.position).normalized;
 
         if (direction.sqrMagnitude > 0.001f)
         {
             Quaternion lookRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 10f);
+
+            // Guardamos los ángulos que ahora sí reflejan inclinación vertical también
+            lookAngleY = lookRotation.eulerAngles.y;
+            lookAngleX = lookRotation.eulerAngles.x;
         }
     }
 
-    void Disparar()
+        void Disparar()
     {
         DispararBala.Shoot(lookAngleX, lookAngleY);
     }
