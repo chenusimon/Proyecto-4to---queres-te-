@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public DispararBala DispararBala;
     private int arma = 1;
+    private bool cosa = false;
 
     //Assingables
     public Transform playerCam;
@@ -43,7 +44,6 @@ public class PlayerMovement : MonoBehaviour
     private float jumpCooldown = 0.25f;
     private float jumpForce = 2000f;
     public float extraFallForce = 20f;
-    private bool jumped = false;
 
     //Input
     float x, y;
@@ -83,7 +83,16 @@ public class PlayerMovement : MonoBehaviour
             arma = 1;
         }
 
-        MyInput();
+        if (rb.velocity.y > 0f || rb.velocity.y < 0f)
+        {
+            cosa= false;
+        }
+        else
+        {
+            cosa = true;
+        }
+
+            MyInput();
         Look();
         if (Input.GetMouseButtonDown(0))
         {
@@ -92,10 +101,6 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             SceneManager.LoadScene("SampleScene");
-        }
-        if (grounded == true)
-        {
-            jumped = false;
         }
     }
 
@@ -165,15 +170,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (readyToJump && jumping) Jump();
 
-        if (rb.velocity.y < 0)
+        if (rb.velocity.y < 1f && cosa == true )
         {
             rb.AddForce(Vector3.down * extraFallForce, ForceMode.Acceleration);
         }
 
-        if (!grounded && !jumped)
-        {
-            rb.AddForce(Vector3.down * 500f, ForceMode.Acceleration);
-        }
 
         float effectiveMaxSpeed = maxSpeed;
         if (crouching || normalVector != Vector3.up) effectiveMaxSpeed = float.MaxValue;
@@ -204,7 +205,6 @@ public class PlayerMovement : MonoBehaviour
 
             rb.AddForce(Vector2.up * jumpForce * 1.5f);
             rb.AddForce(normalVector * jumpForce * 0.5f);
-            jumped = true;
 
             Vector3 vel = rb.velocity;
             if (rb.velocity.y < 0.5f)

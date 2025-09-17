@@ -43,7 +43,7 @@ public class AgentManager : MonoBehaviour
 
         void Disparar()
     {
-        DispararBala.Shoot(lookAngleX, lookAngleY);
+        DispararBala.Shoot(lookAngleX, lookAngleY, 1);
     }
 
     public void OnCollisionEnter(Collision collision)
