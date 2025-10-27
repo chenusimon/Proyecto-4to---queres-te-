@@ -14,26 +14,46 @@ public class DispararBala : MonoBehaviour
     public Transform orientation;
     public Rigidbody rbPlayer;
     public GameObject player;
-    float knockback = -40f;
+    float knockback = -10f;
+    public MeshRenderer mr1;
+    public MeshRenderer mr2;
+    public MeshRenderer mr3;
 
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            arma = 2;
-            tiempo = 0;
+            if (!(arma == 2))
+            {
+                arma = 2;
+                tiempo = 0;
+                mr2.enabled = true;
+                mr1.enabled = false;
+                mr3.enabled = false;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            arma = 1;
-            tiempo = 0;
+            if (!(arma == 1))
+            {
+                arma = 1;
+                tiempo = 0;
+                mr1.enabled = true;
+                mr2.enabled = false;
+                mr3.enabled = false;
+            }
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            arma = 3;
-            tiempo = 0;
+            if(!(arma == 3)) { 
+                arma = 3;
+                tiempo = 0;
+                mr3.enabled = true;
+                mr1.enabled = false;
+                mr2.enabled = false;
+            }
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -52,7 +72,7 @@ public class DispararBala : MonoBehaviour
         if (arma == 1) {
             if (tiempo >= 20) {
                 Quaternion rotacion = Quaternion.Euler(xRotation, yRotation, 0);
-                GameObject bala = Instantiate(prefabBala2, puntoDeDisparo.position, rotacion);
+                GameObject bala = Instantiate(prefabBala, puntoDeDisparo.position, rotacion);
                 Rigidbody rb = bala.GetComponent<Rigidbody>();
                 if (rb != null)
                 {

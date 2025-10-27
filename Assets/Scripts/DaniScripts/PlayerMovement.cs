@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
     private bool readyToJump = true;
     private float jumpCooldown = 0.25f;
     [Tooltip("this determines the jump force but is also applied when jumping off of walls, if you decrease it, you may end up being able to walljump and then get back onto the wall leading to infinite height.")]
-    public float jumpForce = 250f;
+    public float jumpForce = 550f;
     float x, y;
     bool jumping;
     private Vector3 normalVector = Vector3.up;

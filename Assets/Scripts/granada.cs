@@ -6,7 +6,7 @@ public class granada : MonoBehaviour
 {
     public GameObject explosionEffect; // Prefab de partículas
     public float explosionRadius = 5f; // Radio más realista
-    public float explosionForce = 700f; // Fuerza realista
+    public float explosionForce = 200f; // Fuerza realista
     public float destroyEnemyDistance = 1f;
 
     private bool hasExploded = false;
