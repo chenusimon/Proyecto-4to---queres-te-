@@ -9,7 +9,17 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: plataforma2,5x2,5
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: piso
+    second: {fileID: 2100000, guid: d0c1ee4acd4974a4bad0ac9e8f7f38cc, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 16e3e912b4631abc2e4c86103120bf26
+    second: {fileID: 2800000, guid: 9c0404e7c2139b844b478a3f884ea07b, type: 3}
   materials:
     importMaterials: 1
     materialName: 0

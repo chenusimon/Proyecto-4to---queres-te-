@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Movement")]
     [Tooltip("additive force amount. every physics update that forward is pressed, this force (multiplied by 1/tickrate) will be added to the player.")]
-    public float moveSpeed = 4500;
+    public float moveSpeed = 10000;
     [Tooltip("maximum local velocity before input is cancelled")]
     public float maxSpeed = 20;
     [Tooltip("normal countermovement when not crouching.")]
@@ -177,6 +177,12 @@ public class PlayerMovement : MonoBehaviour
         //Extra gravity
         rb.AddForce(Vector3.down * Time.deltaTime * 10);
 
+        // NUEVO: fuerza extra cuando el jugador cae
+        if (rb.velocity.y < 0f)
+        {
+            rb.AddForce(Vector3.down * Time.deltaTime * 30); // ajusta el 30 a tu gusto
+        }
+
         //Find actual velocity relative to where player is looking
         Vector2 mag = FindVelRelativeToLook();
         float xMag = mag.x, yMag = mag.y;
@@ -236,7 +242,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else if (rb.velocity.y > 0f)
             {
-                rb.velocity = new Vector3(velocity.x, velocity.y / 2f, velocity.z);
+                rb.velocity = new Vector3(velocity.x, rb.velocity.y / 2f, velocity.z);
             }
             if (isWallRunning)
             {

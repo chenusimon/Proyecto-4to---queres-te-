@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class AgentManager : MonoBehaviour
 {
-    public DispararBala DispararBala;
+    public EnemyShoot DispararBala;
     [SerializeField] NavMeshAgent agent;
     public Transform targetTR;
     [SerializeField] Animator anim;

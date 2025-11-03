@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class BalaScript : MonoBehaviour
+public class BalaEnemyScript : MonoBehaviour
 {
 
 
@@ -11,10 +11,9 @@ public class BalaScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            SceneManager.LoadScene("SampleScene");
             Destroy(gameObject);
         }
-        else if (collision.gameObject.CompareTag("bala"))
+        else if (collision.gameObject.CompareTag("bala") || collision.gameObject.CompareTag("enemigo"))
         {
             return;
         }

@@ -13,7 +13,6 @@ public class DispararBala : MonoBehaviour
     int tiempo = 0;
     public Transform orientation;
     public Rigidbody rbPlayer;
-    public GameObject player;
     float knockback = -10f;
     public MeshRenderer mr1;
     public MeshRenderer mr2;
@@ -47,7 +46,8 @@ public class DispararBala : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            if(!(arma == 3)) { 
+            if (!(arma == 3))
+            {
                 arma = 3;
                 tiempo = 0;
                 mr3.enabled = true;
@@ -58,7 +58,7 @@ public class DispararBala : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            Shoot(orientation.transform.eulerAngles.x , orientation.transform.eulerAngles.y, arma);
+            Shoot(orientation.transform.eulerAngles.x, orientation.transform.eulerAngles.y, arma);
         }
     }
 
@@ -69,19 +69,22 @@ public class DispararBala : MonoBehaviour
 
     public void Shoot(float xRotation, float yRotation, int arma)
     {
-        if (arma == 1) {
-            if (tiempo >= 20) {
+        if (arma == 1)
+        {
+            if (tiempo >= 20)
+            {
                 Quaternion rotacion = Quaternion.Euler(xRotation, yRotation, 0);
                 GameObject bala = Instantiate(prefabBala, puntoDeDisparo.position, rotacion);
                 Rigidbody rb = bala.GetComponent<Rigidbody>();
                 if (rb != null)
                 {
-                    rb.velocity = bala.transform.forward * velocidad;
+                    rb.velocity = (bala.transform.forward * velocidad) + rbPlayer.velocity;
                 }
                 tiempo = 0;
             }
         }
-        else if (arma == 2) {
+        else if (arma == 2)
+        {
             if (tiempo >= 50)
             {
 
@@ -90,7 +93,7 @@ public class DispararBala : MonoBehaviour
                 Rigidbody rb1 = bala1.GetComponent<Rigidbody>();
                 if (rb1 != null)
                 {
-                    rb1.velocity = bala1.transform.forward * velocidad;
+                    rb1.velocity = (bala1.transform.forward * velocidad) + rbPlayer.velocity;
                 }
 
                 Quaternion rotacion2 = Quaternion.Euler(xRotation += 15, yRotation -= 5, 0);
@@ -98,7 +101,7 @@ public class DispararBala : MonoBehaviour
                 Rigidbody rb2 = bala2.GetComponent<Rigidbody>();
                 if (rb2 != null)
                 {
-                    rb2.velocity = bala2.transform.forward * velocidad;
+                    rb2.velocity = (bala2.transform.forward * velocidad) + rbPlayer.velocity;
                 }
 
                 Quaternion rotacion3 = Quaternion.Euler(xRotation -= 7, yRotation += 9, 0);
@@ -106,7 +109,7 @@ public class DispararBala : MonoBehaviour
                 Rigidbody rb3 = bala3.GetComponent<Rigidbody>();
                 if (rb3 != null)
                 {
-                    rb3.velocity = bala3.transform.forward * velocidad;
+                    rb3.velocity = (bala3.transform.forward * velocidad) + rbPlayer.velocity;
                 }
 
                 Quaternion rotacion4 = Quaternion.Euler(xRotation -= 2, yRotation -= 10, 0);
@@ -114,7 +117,7 @@ public class DispararBala : MonoBehaviour
                 Rigidbody rb4 = bala4.GetComponent<Rigidbody>();
                 if (rb4 != null)
                 {
-                    rb4.velocity = bala4.transform.forward * velocidad;
+                    rb4.velocity = (bala4.transform.forward * velocidad) + rbPlayer.velocity;
                 }
 
                 Quaternion rotacion5 = Quaternion.Euler(xRotation += 8, yRotation, 0);
@@ -122,9 +125,9 @@ public class DispararBala : MonoBehaviour
                 Rigidbody rb5 = bala5.GetComponent<Rigidbody>();
                 if (rb5 != null)
                 {
-                    rb5.velocity = bala5.transform.forward * velocidad;
+                    rb5.velocity = (bala5.transform.forward * velocidad) + rbPlayer.velocity;
                 }
-                rbPlayer.velocity = orientation.transform.forward * knockback;
+                rbPlayer.velocity += orientation.transform.forward * knockback;
                 tiempo = 0;
             }
         }
@@ -137,11 +140,10 @@ public class DispararBala : MonoBehaviour
                 Rigidbody rb = bala.GetComponent<Rigidbody>();
                 if (rb != null)
                 {
-                    rb.velocity = bala.transform.forward * velocidad/2;
+                    rb.velocity = (bala.transform.forward * velocidad / 2) + rbPlayer.velocity;
                 }
                 tiempo = 0;
             }
         }
     }
 }
-
