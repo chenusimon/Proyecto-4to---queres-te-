@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab8292499e8b6cb4997064a20a000fb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabBala: {fileID: 3899624601307561602, guid: 261ecf4ff90e52d44b14ca2dd8bc1157,
+  prefabBala: {fileID: 3899624601307561602, guid: 7143f4b83323cdb4ca28953ecf54a278,
     type: 3}
   puntoDeDisparo: {fileID: 1457489262}
   orientation: {fileID: 1457489262}

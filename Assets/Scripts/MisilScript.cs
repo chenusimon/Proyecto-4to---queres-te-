@@ -9,7 +9,7 @@ public class MisilScript : MonoBehaviour
     public Transform targetTR;
     public GameObject explosionEffect;
     public float explosionRadius = 5f;
-    public float explosionForce = 200f;
+    float explosionForce = 2000f;
     public float destroyEnemyDistance = 1f;
     private bool hasExploded = false;
     int cuenta = 0;
@@ -46,7 +46,6 @@ public class MisilScript : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.name);
         if (hasExploded) return;
         hasExploded = true;
 

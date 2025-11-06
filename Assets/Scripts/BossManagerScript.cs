@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class BossManagerScript : MonoBehaviour
 {
-    public EnemyShoot EnemyShoot;
+    public GunDirection GunDirection;
     [SerializeField] NavMeshAgent agent;
     public Transform targetTR;
     [SerializeField] Animator anim;
@@ -36,9 +36,6 @@ public class BossManagerScript : MonoBehaviour
         {
             Quaternion lookRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 10f);
-
-            lookAngleY = lookRotation.eulerAngles.y;
-            lookAngleX = lookRotation.eulerAngles.x;
         }
 
             if (cuenta >= 500)
@@ -47,10 +44,10 @@ public class BossManagerScript : MonoBehaviour
             cuenta = 0;
             }
             if (cuenta2 >= 25)
-        {
-            EnemyShoot.Shoot(lookAngleX, (lookAngleY + 5), 1);
+            {
+            GunDirection.Shoot();
             cuenta2 = 0;
-        }
+            }
 
 
     }

@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class granada : MonoBehaviour
 {
@@ -8,13 +10,21 @@ public class granada : MonoBehaviour
     float explosionRadius = 10f;
     float explosionForce = 200f;
     float destroyEnemyDistance = 1f;
+    public AgentManager agentManager;
 
     private bool hasExploded = false;
 
-    void OnCollisionEnter(Collision collision)
+    async Task OnCollisionEnter(Collision collision)
     {
         if (hasExploded) return;
         hasExploded = true;
+
+        if (collision.gameObject.CompareTag("enemigo")) 
+        { 
+        NavMeshAgent agent = collision.gameObject.GetComponent<NavMeshAgent>(); 
+        agent.enabled = false;
+        }
+            
 
         if (explosionEffect != null)
         {

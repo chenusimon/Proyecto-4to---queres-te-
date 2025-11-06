@@ -8,6 +8,7 @@ public class EnemyShoot : MonoBehaviour
     public Transform puntoDeDisparo;
     float velocidad = 40f;
     public Transform orientation;
+    public AgentManager agentManager;
 
     public void Shoot(float xRotation, float yRotation, int arma)
     {
@@ -20,5 +21,11 @@ public class EnemyShoot : MonoBehaviour
             rb.velocity = bala.transform.forward * velocidad;
         }
     }
-            
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player") && agentManager.activated == false )
+        {
+            agentManager.activate();
+        }
+    }
 }

@@ -191,7 +191,7 @@ public class PlayerMovement : MonoBehaviour
         CounterMovement(x, y, mag);
 
         //If holding jump && ready to jump, then jump
-        if (readyToJump && jumping) Jump();
+        if (readyToJump && jumping) Jump(jumpForce);
 
         //Set max speed
         float maxSpeed = this.maxSpeed;
@@ -227,15 +227,15 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(orientation.transform.right * x * moveSpeed * Time.deltaTime * multiplier);
     }
 
-    private void Jump()
+    public void Jump(float force)
     {
         if ((grounded || isWallRunning || surfing) && readyToJump)
         {
             MonoBehaviour.print("jumping");
             Vector3 velocity = rb.velocity;
             readyToJump = false;
-            rb.AddForce(Vector2.up * jumpForce * 1.5f);
-            rb.AddForce(normalVector * jumpForce * 0.5f);
+            rb.AddForce(Vector2.up * force * 1.5f);
+            rb.AddForce(normalVector * force * 0.5f);
             if (rb.velocity.y < 0.5f)
             {
                 rb.velocity = new Vector3(velocity.x, 0f, velocity.z);
@@ -246,7 +246,7 @@ public class PlayerMovement : MonoBehaviour
             }
             if (isWallRunning)
             {
-                rb.AddForce(wallNormalVector * jumpForce * 3f);
+                rb.AddForce(wallNormalVector * force * 3f);
             }
             Invoke("ResetJump", jumpCooldown);
             if (isWallRunning)

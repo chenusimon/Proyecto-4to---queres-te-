@@ -11,6 +11,9 @@ public class AgentManager : MonoBehaviour
     [SerializeField] Animator anim;
     public float lookAngleY;
     public float lookAngleX;
+    int cuenta = 0;
+    int cuenta2 = 0;
+    public bool activated = false;
 
     void Awake()
     {
@@ -18,30 +21,52 @@ public class AgentManager : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         agent.updateRotation = false;
 
-        // Llamar a la función "Disparar" cada 1 segundo
-        InvokeRepeating("Disparar", 1f, 1f);
+
+        agent.enabled = false;
+
+            
     }
 
     void Update()
     {
-        agent.destination = targetTR.position;
-        anim.SetFloat("speed", agent.velocity.magnitude);
-
-        // Dirección completa hacia el target (incluye altura)
-        Vector3 direction = (targetTR.position - transform.position).normalized;
-
-        if (direction.sqrMagnitude > 0.001f)
+        if (agent.enabled == true)
         {
-            Quaternion lookRotation = Quaternion.LookRotation(direction);
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 10f);
+            agent.destination = targetTR.position;
+            anim.SetFloat("speed", agent.velocity.magnitude);
 
-            // Guardamos los ángulos que ahora sí reflejan inclinación vertical también
-            lookAngleY = lookRotation.eulerAngles.y;
-            lookAngleX = lookRotation.eulerAngles.x;
+            // Dirección completa hacia el target (incluye altura)
+            Vector3 direction = (targetTR.position - transform.position).normalized;
+
+            if (direction.sqrMagnitude > 0.001f)
+            {
+                Quaternion lookRotation = Quaternion.LookRotation(direction);
+                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 10f);
+
+                // Guardamos los ángulos que ahora sí reflejan inclinación vertical también
+                lookAngleY = lookRotation.eulerAngles.y;
+                lookAngleX = lookRotation.eulerAngles.x;
+            }
+            if (cuenta > 50)
+            {
+                Disparar();
+            }
         }
     }
 
-        void Disparar()
+    void fixedUpdate()
+    {
+        cuenta += 1;
+        if (activated && agent.enabled == false)
+        {
+            cuenta2 += 1;
+                if (cuenta < 250) 
+                {
+                    agent.enabled = true;
+                }
+        }
+    }
+
+    void Disparar()
     {
         DispararBala.Shoot(lookAngleX, lookAngleY, 1);
     }
@@ -52,5 +77,10 @@ public class AgentManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    public void activate()
+    {
+        agent.enabled = true;
+        activated = true;
     }
 }
