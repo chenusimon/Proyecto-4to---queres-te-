@@ -14,6 +14,7 @@ public class AgentManager : MonoBehaviour
     int cuenta = 0;
     int cuenta2 = 0;
     public bool activated = false;
+    public Rigidbody rb;
 
     void Awake()
     {
@@ -62,6 +63,8 @@ public class AgentManager : MonoBehaviour
                 if (cuenta < 250) 
                 {
                     agent.enabled = true;
+                    rb.isKinematic = true;
+                cuenta2 = 0;
                 }
         }
     }

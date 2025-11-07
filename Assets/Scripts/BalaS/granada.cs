@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -14,17 +15,11 @@ public class granada : MonoBehaviour
 
     private bool hasExploded = false;
 
-    async Task OnCollisionEnter(Collision collision)
-    {
+     void OnCollisionEnter(Collision collision)
+     {
         if (hasExploded) return;
         hasExploded = true;
-
-        if (collision.gameObject.CompareTag("enemigo")) 
-        { 
-        NavMeshAgent agent = collision.gameObject.GetComponent<NavMeshAgent>(); 
-        agent.enabled = false;
-        }
-            
+        
 
         if (explosionEffect != null)
         {
@@ -35,6 +30,14 @@ public class granada : MonoBehaviour
 
         foreach (Collider nearby in colliders)
         {
+            if (nearby.gameObject.CompareTag("enemigo"))
+            {
+                NavMeshAgent agent = nearby.gameObject.GetComponent<NavMeshAgent>();
+                agent.enabled = false;
+                Debug.Log(agent.enabled);
+                Rigidbody agentrb = nearby.GetComponent<Rigidbody>();
+                agentrb.isKinematic = false;
+            }
             Rigidbody rb = nearby.GetComponent<Rigidbody>();
             if (rb != null)
             {
@@ -48,10 +51,12 @@ public class granada : MonoBehaviour
                 if (distance < destroyEnemyDistance && nearby.CompareTag("enemigo"))
                 {
                     Destroy(nearby.gameObject);
+                    Debug.Log("el enemigo es gay y se esta muriendo en vez de salir volando");
                 }
             }
         }
 
         Destroy(gameObject, 0.1f);
     }
+
 }

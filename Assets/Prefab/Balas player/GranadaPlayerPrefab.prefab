@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 3899624601307561601}
   - component: {fileID: 7164751174292592815}
   m_Layer: 0
-  m_Name: BalaPrefab 2
-  m_TagString: bala
+  m_Name: GranadaPlayerPrefab
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,8 +78,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionEffect: {fileID: 4088012569415003840, guid: 81d70551e69e5e34cb93d134031093f2,
     type: 3}
-  explosionRadius: 5
-  explosionForce: 700
+  agentManager: {fileID: 0}
 --- !u!1001 &438572707460018763
 PrefabInstance:
   m_ObjectHideFlags: 0
