@@ -11,7 +11,32 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: columnaPared10m
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: junta
+    second: {fileID: 2100000, guid: 9fd793a8a544d494d907aa79b7f6db77, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: oxido
+    second: {fileID: 2100000, guid: 249756def518a5e4d93d57be521d1cd3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: remache
+    second: {fileID: 2100000, guid: 0e3ffcd1202c0644a918f38df04d6986, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: remaches
+    second: {fileID: 2800000, guid: 4d77383f67c94d746a0f2658c9f436a3, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: rust_coarse_01_diff_4k
+    second: {fileID: 2800000, guid: 9efb1d9ba5b44e941ac2f959275372e8, type: 3}
   materials:
     importMaterials: 1
     materialName: 0

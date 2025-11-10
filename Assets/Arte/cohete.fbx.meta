@@ -11,7 +11,37 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Cylinder
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: b9e219ac0bf438c458a65cf3de33803a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: cccc2ad82a25be34dab9d46577f800ef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.006
+    second: {fileID: 2100000, guid: 8092878883e28224fa5db416a432a9a4, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 94396740-pared-roja-y-texturizada-de-una-casa-de-pueblo
+    second: {fileID: 2800000, guid: 82da4c3af1d89004e8587106ddc74d4a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Texturelabs_Metal_184S
+    second: {fileID: 2800000, guid: c51c4abebb409f04a86f4eb4f3e0fe59, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: metal-texture-pictures-9do3hj7b38n8t4sg
+    second: {fileID: 2800000, guid: 0e241040c12344e4b9b54240160afbed, type: 3}
   materials:
     importMaterials: 1
     materialName: 0

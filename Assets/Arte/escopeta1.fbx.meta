@@ -22,6 +22,11 @@ ModelImporter:
     2100000: metal2
     2100002: madera
     2100004: metal
+    2100006: FRAME
+    2100008: METALNEGRO
+    2100010: perforado
+    2100012: metalFrame
+    2100014: Material.002
     2300000: Cube
     2300002: Cube.001
     2300004: Cube.002
@@ -29,6 +34,7 @@ ModelImporter:
     2300008: Cylinder
     2300010: Cylinder.001
     2300012: Cylinder.002
+    2300014: //RootNode
     3300000: Cube
     3300002: Cube.001
     3300004: Cube.002
@@ -36,6 +42,7 @@ ModelImporter:
     3300008: Cylinder
     3300010: Cylinder.001
     3300012: Cylinder.002
+    3300014: //RootNode
     4300000: Cylinder
     4300002: Cylinder.001
     4300004: Cube
@@ -43,6 +50,7 @@ ModelImporter:
     4300008: Cube.001
     4300010: Cube.002
     4300012: Cube.003
+    4300014: escopeta
     2186277476908879412: ImportLogs
   externalObjects: {}
   materials:

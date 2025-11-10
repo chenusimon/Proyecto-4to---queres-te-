@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class AgentManager : MonoBehaviour
 {
-    public EnemyShoot DispararBala;
+    public EnemyShoot enemyShoot;
     [SerializeField] NavMeshAgent agent;
     public Transform targetTR;
     [SerializeField] Animator anim;
@@ -47,16 +47,17 @@ public class AgentManager : MonoBehaviour
                 lookAngleY = lookRotation.eulerAngles.y;
                 lookAngleX = lookRotation.eulerAngles.x;
             }
-            if (cuenta > 50)
+            if (cuenta >= 50)
             {
                 Disparar();
+                cuenta = 0;
             }
         }
     }
 
-    void fixedUpdate()
+    void FixedUpdate()
     {
-        cuenta += 1;
+        cuenta = cuenta + 1;
         if (activated && agent.enabled == false)
         {
             cuenta2 += 1;
@@ -71,7 +72,7 @@ public class AgentManager : MonoBehaviour
 
     void Disparar()
     {
-        DispararBala.Shoot(lookAngleX, lookAngleY, 1);
+        enemyShoot.Shoot(lookAngleX, lookAngleY, 1);
     }
 
     public void OnCollisionEnter(Collision collision)

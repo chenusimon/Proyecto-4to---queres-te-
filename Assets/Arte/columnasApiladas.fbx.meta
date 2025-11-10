@@ -9,7 +9,17 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: h
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: oxido
+    second: {fileID: 2100000, guid: 42fa6b3c950ab8c45909fa47bcc43ae9, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: rust_coarse_01_diff_4k
+    second: {fileID: 2800000, guid: b09bf4133c257ff41b74fb461de007de, type: 3}
   materials:
     importMaterials: 1
     materialName: 0

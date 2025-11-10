@@ -86,7 +86,7 @@ public class DispararBala : MonoBehaviour
         }
         else if (arma == 2)
         {
-            if (tiempo >= 50)
+            if (tiempo >= 70)
             {
 
                 Quaternion rotacion1 = Quaternion.Euler(xRotation, yRotation += 10, 0);

@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 3899624601307561600}
   - component: {fileID: 3899624601307561603}
   - component: {fileID: 3899624601307561601}
-  - component: {fileID: 3899624601307561606}
+  - component: {fileID: 9137633260871016215}
   m_Layer: 0
-  m_Name: BalaPrefab
+  m_Name: BalaEnemyPrefab
   m_TagString: bala
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,7 +64,7 @@ CapsuleCollider:
   m_Height: 2.75
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3899624601307561606
+--- !u!114 &9137633260871016215
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -73,7 +73,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3899624601307561602}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae169c80542b1c5418fc7ac4cbf65152, type: 3}
+  m_Script: {fileID: 11500000, guid: 235ceaebeb6b9604bb5a3bbcbef6a09b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &438572707460018763

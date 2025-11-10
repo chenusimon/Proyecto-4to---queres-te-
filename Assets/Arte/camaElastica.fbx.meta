@@ -12,7 +12,47 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Cylinder.003
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 27454c25e5ec3d941b720c32c25caff4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.003
+    second: {fileID: 2100000, guid: 0084ece0ae2803740bb15201b9da4e80, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.004
+    second: {fileID: 2100000, guid: 338cbb162ddb09e4dba5e429254b48a6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: laton
+    second: {fileID: 2100000, guid: 08287a4bfcdb763419fd88c3dc9ec86c, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: "152088358-fondo-de-patr\xF3n-de-textura-de-tela-negra"
+    second: {fileID: 2800000, guid: b5d3cf8415e01024cb8d85cb75a2670f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: istockphoto-1149216023-612x612
+    second: {fileID: 2800000, guid: a68063e82e9b1ab43b59d0c50433368b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: laton
+    second: {fileID: 2800000, guid: 1c04bc8ae6f9d6340a17bf7ba589d324, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: muelles-cama-elastica
+    second: {fileID: 2800000, guid: 360a4447853a3944899b7aac24bf4e7c, type: 3}
   materials:
     importMaterials: 1
     materialName: 0

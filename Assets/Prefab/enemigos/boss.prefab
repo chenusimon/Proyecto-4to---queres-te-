@@ -278,6 +278,7 @@ MonoBehaviour:
     type: 3}
   puntoDeDisparo: {fileID: 712981924}
   orientation: {fileID: 946601050}
+  agentManager: {fileID: 0}
 --- !u!1 &6495024184206170753
 GameObject:
   m_ObjectHideFlags: 0

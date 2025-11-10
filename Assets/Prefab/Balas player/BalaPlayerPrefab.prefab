@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3899624601307561601}
   - component: {fileID: 3899624601307561606}
   m_Layer: 0
-  m_Name: BalaPrefab
+  m_Name: BalaPlayerPrefab
   m_TagString: bala
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3899624601307561602}
   m_LocalRotation: {x: 0.0000004768371, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.88, z: -0}
-  m_LocalScale: {x: 0.079965875, y: 0.08289913, z: 0.07987879}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children:
   - {fileID: 438572707459885259}
   m_Father: {fileID: 0}
@@ -60,8 +60,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.6
-  m_Height: 2.75
+  m_Radius: 0.17
+  m_Height: 0.6
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3899624601307561606
@@ -109,15 +109,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d2e7e78248bc43a4989a25e25e6f959d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d2e7e78248bc43a4989a25e25e6f959d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d2e7e78248bc43a4989a25e25e6f959d, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.70710677
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d2e7e78248bc43a4989a25e25e6f959d, type: 3}
       propertyPath: m_RootOrder
@@ -125,7 +125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d2e7e78248bc43a4989a25e25e6f959d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -90.00001
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d2e7e78248bc43a4989a25e25e6f959d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -137,15 +137,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d2e7e78248bc43a4989a25e25e6f959d, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.8227188
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d2e7e78248bc43a4989a25e25e6f959d, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.8227188
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d2e7e78248bc43a4989a25e25e6f959d, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.8227188
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2e7e78248bc43a4989a25e25e6f959d, type: 3}
