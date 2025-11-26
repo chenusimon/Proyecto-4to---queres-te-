@@ -13,7 +13,47 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: frame
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FRAME
+    second: {fileID: 2100000, guid: 1859c3a86c1997242a5e91887e8ae2b5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: METALNEGRO
+    second: {fileID: 2100000, guid: 47e382e9465fa6f4fa52d881a40b0e8d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: 03fcc4655ff63be429afddc83f01acc7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metalFrame
+    second: {fileID: 2100000, guid: 22e8185fb497150469bfc93cea08defb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: perforado
+    second: {fileID: 2100000, guid: 9b6b2527b6ce40c43b86df6fa2e671fb, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Captura de pantalla 2025-11-06 185407
+    second: {fileID: 2800000, guid: 074271cd0b9b3434a87609f4e4f4eb2c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Captura de pantalla 2025-11-06 185856
+    second: {fileID: 2800000, guid: f00ef023bcbd54f46bb5a9217c759475, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: istockphoto-664706858-612x612
+    second: {fileID: 2800000, guid: c4b04317ef75b0149939b49f4e56b26e, type: 3}
   materials:
     importMaterials: 1
     materialName: 0
