@@ -113,6 +113,9 @@ MonoBehaviour:
     type: 3}
   explosionRadius: 5
   destroyEnemyDistance: 1
+  bossManager: {fileID: 0}
+  killradio: {fileID: 3979369443026713006, guid: 4243d4b4dce444f4daa3c0d85db1418e,
+    type: 3}
 --- !u!54 &8163714826105752683
 Rigidbody:
   m_ObjectHideFlags: 0

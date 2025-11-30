@@ -19,6 +19,7 @@ public class BossManagerScript : MonoBehaviour
     int cuenta3 = 0;
     public int vida = 500;
     public Rigidbody rb;
+    public bool grounded = false;
 
     void Awake()
     {
@@ -32,7 +33,7 @@ public class BossManagerScript : MonoBehaviour
     {
         if (agent.enabled == true)
         {
-            Debug.Log(vida);
+            
             agent.destination = targetTR.position;
             anim.SetFloat("speed", agent.velocity.magnitude);
 
@@ -53,6 +54,7 @@ public class BossManagerScript : MonoBehaviour
             {
                 GunDirection.Shoot();
                 cuenta2 = 0;
+                Debug.Log(vida);
             }
         }
 
@@ -67,7 +69,7 @@ public class BossManagerScript : MonoBehaviour
             cuenta3 += 1;
         }
 
-        if (cuenta3 >= 250)
+        if (cuenta3 >= 100 && grounded)
         {
             agent.enabled = true;
             rb.isKinematic = true;

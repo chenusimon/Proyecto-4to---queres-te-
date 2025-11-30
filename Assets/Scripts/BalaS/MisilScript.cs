@@ -14,6 +14,7 @@ public class MisilScript : MonoBehaviour
     private bool hasExploded = false;
     int cuenta = 0;
     public BossManagerScript bossManager;
+    public GameObject killradio;
 
     void Awake()
     {
@@ -53,10 +54,9 @@ public class MisilScript : MonoBehaviour
         hasExploded = true;
 
 
-        if (explosionEffect != null)
-        {
             Instantiate(explosionEffect, transform.position, Quaternion.identity);
-        }
+            Instantiate(killradio, transform.position, Quaternion.identity);
+
 
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
 
@@ -65,10 +65,13 @@ public class MisilScript : MonoBehaviour
             if ((nearby.gameObject.CompareTag("enemigo")) || nearby.gameObject.CompareTag("jefe"))
             {
                 NavMeshAgent agent = nearby.gameObject.GetComponent<NavMeshAgent>();
-                agent.enabled = false;
-                Debug.Log(agent.enabled);
-                Rigidbody agentrb = nearby.GetComponent<Rigidbody>();
-                agentrb.isKinematic = false;
+                if (agent != null)
+                {
+                    agent.enabled = false;
+                    Debug.Log(agent.enabled);
+                    Rigidbody agentrb = nearby.GetComponent<Rigidbody>();
+                    agentrb.isKinematic = false;
+                }
             }
             Rigidbody rb = nearby.GetComponent<Rigidbody>();
             if (rb != null)
@@ -80,18 +83,6 @@ public class MisilScript : MonoBehaviour
 
                 rb.AddForce(direction * explosionForce * distanceFactor, ForceMode.Impulse);
 
-                if (distance < destroyEnemyDistance)
-                {
-                    if (nearby.CompareTag("enemigo"))
-                    {
-                        Destroy(nearby.gameObject);
-                    }
-                    else if (nearby.CompareTag("jefe"))
-                    {
-                        bossManager = nearby.gameObject.GetComponent<BossManagerScript>();
-                        bossManager.vida += -100;
-                    }
-                }
             }
         }
 

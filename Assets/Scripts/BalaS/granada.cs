@@ -10,27 +10,26 @@ public class granada : MonoBehaviour
     public GameObject explosionEffect;
     float explosionRadius = 10f;
     float explosionForce = 200f;
-    float destroyEnemyDistance = 1f;
+    float destroyEnemyDistance = 2f;
     public AgentManager agentManager;
     public BossManagerScript bossManager;
+    public GameObject killradio;
 
     private bool hasExploded = false;
 
      void OnCollisionEnter(Collision collision)
      {
-        if (collision.gameObject.CompareTag("player")) return;
+        if (collision.gameObject.CompareTag("Player")) return;
 
         Destroy(gameObject, 0.1f);
         if (hasExploded) return;
         hasExploded = true;
         
 
-        if (explosionEffect != null)
-        {
             Instantiate(explosionEffect, transform.position, Quaternion.identity);
-        }
+            Instantiate(killradio, transform.position, Quaternion.identity);
 
-        Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
+            Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
 
         foreach (Collider nearby in colliders)
         {
@@ -51,19 +50,6 @@ public class granada : MonoBehaviour
                 float distanceFactor = Mathf.Clamp01(1 - (distance / explosionRadius));
 
                 rb.AddForce(direction * explosionForce * distanceFactor, ForceMode.Impulse);
-
-                if (distance < destroyEnemyDistance)
-                {
-                    if (nearby.CompareTag("enemigo"))
-                    {
-                        Destroy(nearby.gameObject);
-                    }
-                    else if (nearby.CompareTag("jefe"))
-                    {
-                        bossManager = nearby.gameObject.GetComponent<BossManagerScript>();
-                        bossManager.vida += -30;
-                    }
-                }
             }
         }
 

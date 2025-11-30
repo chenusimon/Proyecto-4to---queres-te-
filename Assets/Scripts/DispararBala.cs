@@ -126,7 +126,7 @@ public class DispararBala : MonoBehaviour
                 Rigidbody rb5 = bala5.GetComponent<Rigidbody>();
                 if (rb5 != null)
                 {
-                    rb5.velocity = (bala5.transform.forward * velocidad) + rbPlayer.velocity;
+                    rb5.velocity = (bala5.transform.forward * velocidad);
                 }
                 rbPlayer.velocity += orientation.transform.forward * knockback;
                 tiempo = 0;
@@ -141,7 +141,7 @@ public class DispararBala : MonoBehaviour
                 Rigidbody rb = bala.GetComponent<Rigidbody>();
                 if (rb != null)
                 {
-                    rb.velocity = (bala.transform.forward * velocidad / 2) + rbPlayer.velocity;
+                    rb.velocity = (bala.transform.forward * velocidad / 2);
                 }
                 tiempo = 0;
             }

@@ -79,6 +79,9 @@ MonoBehaviour:
   explosionEffect: {fileID: 4088012569415003840, guid: 81d70551e69e5e34cb93d134031093f2,
     type: 3}
   agentManager: {fileID: 0}
+  bossManager: {fileID: 0}
+  killradio: {fileID: 5107269081957208121, guid: c69ae9d5044c5ba48a84cbd65770c339,
+    type: 3}
 --- !u!1001 &5038987645038390033
 PrefabInstance:
   m_ObjectHideFlags: 0
