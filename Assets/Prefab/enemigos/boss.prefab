@@ -1223,7 +1223,7 @@ GameObject:
   - component: {fileID: 1236263311468698905}
   m_Layer: 0
   m_Name: boss
-  m_TagString: enemigo
+  m_TagString: jefe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

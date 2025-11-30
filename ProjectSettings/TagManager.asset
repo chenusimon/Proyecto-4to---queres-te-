@@ -6,6 +6,7 @@ TagManager:
   tags:
   - enemigo
   - bala
+  - jefe
   layers:
   - Default
   - TransparentFX

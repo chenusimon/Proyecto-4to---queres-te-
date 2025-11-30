@@ -3,17 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AgentManager : MonoBehaviour
+public class BossManagerScript : MonoBehaviour
 {
-    public EnemyShoot enemyShoot;
+    public GunDirection GunDirection;
     [SerializeField] NavMeshAgent agent;
     public Transform targetTR;
     [SerializeField] Animator anim;
     public float lookAngleY;
     public float lookAngleX;
+    public GameObject misil;
+    public bool isMoving = true;
+    public Transform misilLaunch;
     int cuenta = 0;
     int cuenta2 = 0;
-    public bool activated = false;
+    int cuenta3 = 0;
+    public int vida = 500;
     public Rigidbody rb;
 
     void Awake()
@@ -21,70 +25,54 @@ public class AgentManager : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponentInChildren<Animator>();
         agent.updateRotation = false;
-
-
-        agent.enabled = false;
-
-            
+        targetTR = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()
     {
         if (agent.enabled == true)
         {
+            Debug.Log(vida);
             agent.destination = targetTR.position;
             anim.SetFloat("speed", agent.velocity.magnitude);
 
-            // Dirección completa hacia el target (incluye altura)
             Vector3 direction = (targetTR.position - transform.position).normalized;
 
             if (direction.sqrMagnitude > 0.001f)
             {
                 Quaternion lookRotation = Quaternion.LookRotation(direction);
                 transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 10f);
-
-                // Guardamos los ángulos que ahora sí reflejan inclinación vertical también
-                lookAngleY = lookRotation.eulerAngles.y;
-                lookAngleX = lookRotation.eulerAngles.x;
             }
-            if (cuenta >= 50)
+
+            if (cuenta >= 500)
             {
-                Disparar();
+                Instantiate(misil, misilLaunch.position, misilLaunch.rotation);
                 cuenta = 0;
             }
+            if (cuenta2 >= 25)
+            {
+                GunDirection.Shoot();
+                cuenta2 = 0;
+            }
         }
+
     }
 
     void FixedUpdate()
     {
-        cuenta = cuenta + 1;
-        if (activated && agent.enabled == false)
+        cuenta += 1;
+        cuenta2 += 1;
+        if (agent.enabled == false) 
         {
-            cuenta2 += 1;
-                if (cuenta < 250) 
-                {
-                    agent.enabled = true;
-                    rb.isKinematic = true;
-                cuenta2 = 0;
-                }
+            cuenta3 += 1;
+        }
+
+        if (cuenta3 >= 250)
+        {
+            agent.enabled = true;
+            rb.isKinematic = true;
+            cuenta3 = 0;
         }
     }
 
-    void Disparar()
-    {
-        enemyShoot.Shoot(lookAngleX, lookAngleY, 1);
-    }
-
-    public void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("bala"))
-        {
-            Destroy(gameObject);
-        }
-    }
-    public void activate()
-    {
-        agent.enabled = true;
-        activated = true;
-    }
 }

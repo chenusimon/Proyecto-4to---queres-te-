@@ -83,7 +83,7 @@ MonoBehaviour:
   orientation: {fileID: 8358763157628495539}
   rbPlayer: {fileID: 8358763157458967453}
   mr1: {fileID: 8358763158610392262}
-  mr2: {fileID: 0}
+  mr2: {fileID: 4190158143856959537}
   mr3: {fileID: 112545122}
 --- !u!1 &1251510823
 GameObject:
@@ -989,6 +989,12 @@ PrefabInstance:
 --- !u!4 &4190158143858729681 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400014, guid: 5821451521bcb124a805e2f52142d47a,
+    type: 3}
+  m_PrefabInstance: {fileID: 4190158143859128415}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &4190158143856959537 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2300014, guid: 5821451521bcb124a805e2f52142d47a,
     type: 3}
   m_PrefabInstance: {fileID: 4190158143859128415}
   m_PrefabAsset: {fileID: 0}

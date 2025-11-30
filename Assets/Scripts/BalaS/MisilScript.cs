@@ -9,10 +9,11 @@ public class MisilScript : MonoBehaviour
     public Transform targetTR;
     public GameObject explosionEffect;
     public float explosionRadius = 5f;
-    float explosionForce = 2000f;
+    float explosionForce = 200f;
     public float destroyEnemyDistance = 1f;
     private bool hasExploded = false;
     int cuenta = 0;
+    public BossManagerScript bossManager;
 
     void Awake()
     {
@@ -44,10 +45,13 @@ public class MisilScript : MonoBehaviour
     }
 
 
-    public void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision collision)
     {
+
+        Destroy(gameObject, 0.1f);
         if (hasExploded) return;
         hasExploded = true;
+
 
         if (explosionEffect != null)
         {
@@ -58,6 +62,14 @@ public class MisilScript : MonoBehaviour
 
         foreach (Collider nearby in colliders)
         {
+            if ((nearby.gameObject.CompareTag("enemigo")) || nearby.gameObject.CompareTag("jefe"))
+            {
+                NavMeshAgent agent = nearby.gameObject.GetComponent<NavMeshAgent>();
+                agent.enabled = false;
+                Debug.Log(agent.enabled);
+                Rigidbody agentrb = nearby.GetComponent<Rigidbody>();
+                agentrb.isKinematic = false;
+            }
             Rigidbody rb = nearby.GetComponent<Rigidbody>();
             if (rb != null)
             {
@@ -68,13 +80,20 @@ public class MisilScript : MonoBehaviour
 
                 rb.AddForce(direction * explosionForce * distanceFactor, ForceMode.Impulse);
 
-                if (distance < destroyEnemyDistance && nearby.CompareTag("enemigo"))
+                if (distance < destroyEnemyDistance)
                 {
-                    Destroy(nearby.gameObject);
+                    if (nearby.CompareTag("enemigo"))
+                    {
+                        Destroy(nearby.gameObject);
+                    }
+                    else if (nearby.CompareTag("jefe"))
+                    {
+                        bossManager = nearby.gameObject.GetComponent<BossManagerScript>();
+                        bossManager.vida += -100;
+                    }
                 }
             }
         }
 
-        Destroy(gameObject, 0.1f);
     }
 }

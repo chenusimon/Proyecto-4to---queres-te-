@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class BalaScript : MonoBehaviour
 {
+    public BossManagerScript bossManager;
 
 
     public void OnCollisionEnter(Collision collision)
@@ -14,9 +15,15 @@ public class BalaScript : MonoBehaviour
         {
             return;
         }
+        else if (collision.gameObject.CompareTag("jefe"))
+        {
+            bossManager = collision.gameObject.GetComponent<BossManagerScript>();
+            bossManager.vida += -1;
+            Destroy(gameObject);
+        }
         else
         {
-            Destroy(gameObject);
+        Destroy(gameObject);
         }
     }
 }

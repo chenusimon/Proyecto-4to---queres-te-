@@ -5,7 +5,7 @@ public class CollisionDetectorRaycast : MonoBehaviour
     [Header("Raycast Settings")]
     public LayerMask detectionLayers;
     public float rayLength = 1f;
-    public Vector3 localDirection = Vector3.forward; // dirección local del rayo
+    public Vector3 localDirection = Vector3.forward;
     public bool showRay = true;
 
     public bool IsColliding { get; private set; }
@@ -13,7 +13,6 @@ public class CollisionDetectorRaycast : MonoBehaviour
 
     void Update()
     {
-        // Convierte la dirección local (por ejemplo, -Vector3.up) a dirección global
         Vector3 worldDirection = transform.TransformDirection(localDirection.normalized);
 
         bool hitDetected = Physics.Raycast(transform.position, worldDirection, out outHit, rayLength, detectionLayers);

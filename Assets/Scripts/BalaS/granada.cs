@@ -12,11 +12,15 @@ public class granada : MonoBehaviour
     float explosionForce = 200f;
     float destroyEnemyDistance = 1f;
     public AgentManager agentManager;
+    public BossManagerScript bossManager;
 
     private bool hasExploded = false;
 
      void OnCollisionEnter(Collision collision)
      {
+        if (collision.gameObject.CompareTag("player")) return;
+
+        Destroy(gameObject, 0.1f);
         if (hasExploded) return;
         hasExploded = true;
         
@@ -30,7 +34,7 @@ public class granada : MonoBehaviour
 
         foreach (Collider nearby in colliders)
         {
-            if (nearby.gameObject.CompareTag("enemigo"))
+            if ((nearby.gameObject.CompareTag("enemigo"))|| nearby.gameObject.CompareTag("jefe"))
             {
                 NavMeshAgent agent = nearby.gameObject.GetComponent<NavMeshAgent>();
                 agent.enabled = false;
@@ -48,15 +52,21 @@ public class granada : MonoBehaviour
 
                 rb.AddForce(direction * explosionForce * distanceFactor, ForceMode.Impulse);
 
-                if (distance < destroyEnemyDistance && nearby.CompareTag("enemigo"))
+                if (distance < destroyEnemyDistance)
                 {
-                    Destroy(nearby.gameObject);
-                    Debug.Log("el enemigo es gay y se esta muriendo en vez de salir volando");
+                    if (nearby.CompareTag("enemigo"))
+                    {
+                        Destroy(nearby.gameObject);
+                    }
+                    else if (nearby.CompareTag("jefe"))
+                    {
+                        bossManager = nearby.gameObject.GetComponent<BossManagerScript>();
+                        bossManager.vida += -30;
+                    }
                 }
             }
         }
 
-        Destroy(gameObject, 0.1f);
-    }
+     }
 
 }
