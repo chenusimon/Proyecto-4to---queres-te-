@@ -89,7 +89,7 @@ public class DispararBala : MonoBehaviour
             if (tiempo >= 70)
             {
 
-                Quaternion rotacion1 = Quaternion.Euler(xRotation, yRotation += 10, 0);
+                Quaternion rotacion1 = Quaternion.Euler(xRotation, yRotation += 4, 0);
                 GameObject bala1 = Instantiate(prefabBala2, puntoDeDisparo.position, rotacion1);
                 Rigidbody rb1 = bala1.GetComponent<Rigidbody>();
                 if (rb1 != null)
@@ -97,7 +97,7 @@ public class DispararBala : MonoBehaviour
                     rb1.velocity = (bala1.transform.forward * velocidad) + rbPlayer.velocity;
                 }
 
-                Quaternion rotacion2 = Quaternion.Euler(xRotation += 15, yRotation -= 5, 0);
+                Quaternion rotacion2 = Quaternion.Euler(xRotation -= 5, yRotation -= 4, 0);
                 GameObject bala2 = Instantiate(prefabBala2, puntoDeDisparo.position, rotacion2);
                 Rigidbody rb2 = bala2.GetComponent<Rigidbody>();
                 if (rb2 != null)
@@ -105,7 +105,7 @@ public class DispararBala : MonoBehaviour
                     rb2.velocity = (bala2.transform.forward * velocidad) + rbPlayer.velocity;
                 }
 
-                Quaternion rotacion3 = Quaternion.Euler(xRotation -= 7, yRotation += 9, 0);
+                Quaternion rotacion3 = Quaternion.Euler(xRotation += 5, yRotation, 0);
                 GameObject bala3 = Instantiate(prefabBala2, puntoDeDisparo.position, rotacion3);
                 Rigidbody rb3 = bala3.GetComponent<Rigidbody>();
                 if (rb3 != null)
@@ -113,7 +113,7 @@ public class DispararBala : MonoBehaviour
                     rb3.velocity = (bala3.transform.forward * velocidad) + rbPlayer.velocity;
                 }
 
-                Quaternion rotacion4 = Quaternion.Euler(xRotation -= 2, yRotation -= 10, 0);
+                Quaternion rotacion4 = Quaternion.Euler(xRotation -= 2, yRotation -=2, 0);
                 GameObject bala4 = Instantiate(prefabBala2, puntoDeDisparo.position, rotacion4);
                 Rigidbody rb4 = bala4.GetComponent<Rigidbody>();
                 if (rb4 != null)
@@ -121,7 +121,7 @@ public class DispararBala : MonoBehaviour
                     rb4.velocity = (bala4.transform.forward * velocidad) + rbPlayer.velocity;
                 }
 
-                Quaternion rotacion5 = Quaternion.Euler(xRotation += 8, yRotation, 0);
+                Quaternion rotacion5 = Quaternion.Euler(xRotation += 2, yRotation += 2, 0);
                 GameObject bala5 = Instantiate(prefabBala2, puntoDeDisparo.position, rotacion5);
                 Rigidbody rb5 = bala5.GetComponent<Rigidbody>();
                 if (rb5 != null)

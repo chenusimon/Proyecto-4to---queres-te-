@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: be18655ea503c4743ac866bfc77ee309
+guid: f706421b7c0e2d444908c84b2b304fe6
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -8,13 +8,18 @@ ModelImporter:
     2100000: iceberg
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Plane.003
+    4300000: Plane.002
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: iceberg
-    second: {fileID: 2100000, guid: be18655ea503c4743ac866bfc77ee309, type: 3}
+    second: {fileID: 2100000, guid: 04fa65cf782592640a05e9f5f8499b9d, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: iceberg1
+    second: {fileID: 2800000, guid: 11a240b62f8a46c479a8c918467f4ce1, type: 3}
   materials:
     importMaterials: 1
     materialName: 0
