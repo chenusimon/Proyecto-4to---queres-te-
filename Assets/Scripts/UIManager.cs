@@ -7,9 +7,17 @@ public class UIManager : MonoBehaviour
 {
     public TextMeshProUGUI timer;
 
-    public void UpdateTimerText(string time, string mins)
+    void update ()
     {
-        timer.text = mins + ":" + time;
+        if (timer = null)
+        {
+            timer = GameObject.FindGameObjectWithTag("timer").GetComponent<TextMeshProUGUI>();
+        }
+    }
+    public void UpdateTimerText(string time, string mins, string ms)
+    {
+
+        timer.text = mins + ":" + time + "," + ms;
     }
 }
     

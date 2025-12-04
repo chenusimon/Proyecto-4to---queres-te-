@@ -9,6 +9,9 @@ public class ChangeScene : MonoBehaviour
     public string scene = "boss scene";
     public void OnCollisionEnter(Collision collision)
     {
-        SceneManager.LoadScene(scene);
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            SceneManager.LoadScene(scene);
+        }
     }
 }

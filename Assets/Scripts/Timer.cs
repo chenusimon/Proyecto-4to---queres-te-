@@ -5,25 +5,34 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
-    public float mins = 0f;
-    public float cuenta = 0f;
+    public int mins = 0;
+    public int ms = 0;
+    public int secs = 0;
     public UIManager uiManager;
 
-    void Start()
+    void Awake()
     {
-        uiManager = FindObjectOfType<UIManager>();
+        DontDestroyOnLoad(gameObject);
     }
-
     void FixedUpdate()
     {
-        cuenta += Time.fixedDeltaTime;
-
-        if (cuenta >= 60f)
+        if (uiManager == null)
         {
-            mins += 1f;
-            cuenta -= 60f;
+            uiManager = FindObjectOfType<UIManager>();
+        }
+        ms += 2;
+
+        if (ms >= 100f)
+        {
+            secs += 1;
+            ms -= 100;
+        }
+        if (secs >= 60)
+        {
+            mins += 1;
+            secs -= 60;
         }
 
-        uiManager.UpdateTimerText(cuenta.ToString("00"), mins.ToString("00"));
+        uiManager.UpdateTimerText(secs.ToString("00"), mins.ToString("00"), ms.ToString("00"));
     }
 }
