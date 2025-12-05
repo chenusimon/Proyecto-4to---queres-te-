@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9137633260871016215}
   m_Layer: 0
   m_Name: BalaEnemyPrefab
-  m_TagString: bala
+  m_TagString: bala enemiga
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

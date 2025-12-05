@@ -10,7 +10,6 @@ public class granada : MonoBehaviour
     public GameObject explosionEffect;
     float explosionRadius = 10f;
     float explosionForce = 200f;
-    float destroyEnemyDistance = 2f;
     public AgentManager agentManager;
     public BossManagerScript bossManager;
     public GameObject killradio;

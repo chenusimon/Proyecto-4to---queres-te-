@@ -18,9 +18,11 @@ public class DispararBala : MonoBehaviour
     public MeshRenderer mr2;
     public MeshRenderer mr3;
 
-
     void Update()
     {
+        if (Time.timeScale == 0f)
+            return;
+
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             if (!(arma == 2))
@@ -64,11 +66,17 @@ public class DispararBala : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (Time.timeScale == 0f)
+            return;
+
         tiempo += 1;
     }
 
     public void Shoot(float xRotation, float yRotation, int arma)
     {
+        if (Time.timeScale == 0f)
+            return;
+
         if (arma == 1)
         {
             if (tiempo >= 20)
@@ -88,7 +96,6 @@ public class DispararBala : MonoBehaviour
         {
             if (tiempo >= 70)
             {
-
                 Quaternion rotacion1 = Quaternion.Euler(xRotation, yRotation += 4, 0);
                 GameObject bala1 = Instantiate(prefabBala2, puntoDeDisparo.position, rotacion1);
                 Rigidbody rb1 = bala1.GetComponent<Rigidbody>();
@@ -113,7 +120,7 @@ public class DispararBala : MonoBehaviour
                     rb3.velocity = (bala3.transform.forward * velocidad) + rbPlayer.velocity;
                 }
 
-                Quaternion rotacion4 = Quaternion.Euler(xRotation -= 2, yRotation -=2, 0);
+                Quaternion rotacion4 = Quaternion.Euler(xRotation -= 2, yRotation -= 2, 0);
                 GameObject bala4 = Instantiate(prefabBala2, puntoDeDisparo.position, rotacion4);
                 Rigidbody rb4 = bala4.GetComponent<Rigidbody>();
                 if (rb4 != null)

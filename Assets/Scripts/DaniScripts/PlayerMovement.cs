@@ -7,39 +7,28 @@ public class PlayerMovement : MonoBehaviour
 {
 
     [Header("Assignables")]
-    [Tooltip("this is a reference to the MainCamera object, not the parent of it.")]
     public Transform playerCam;
-    [Tooltip("reference to orientation object, needed for moving forward and not up or something.")]
     public Transform orientation;
-    [Tooltip("LayerMask for ground layer, important because otherwise the collision detection wont know what ground is")]
     public LayerMask whatIsGround;
     private Rigidbody rb;
 
     [Header("Rotation and look")]
     private float xRotation;
-    [Tooltip("mouse/look sensitivity")]
     public float sensitivity = 50f;
     private float sensMultiplier = 1.5f;
 
     [Header("Movement")]
-    [Tooltip("additive force amount. every physics update that forward is pressed, this force (multiplied by 1/tickrate) will be added to the player.")]
     public float moveSpeed = 10000;
-    [Tooltip("maximum local velocity before input is cancelled")]
     public float maxSpeed = 20;
-    [Tooltip("normal countermovement when not crouching.")]
-    public float counterMovement = 0.175f;
+    public float counterMovement = 0.3f;
     private float threshold = 0.01f;
-    [Tooltip("the maximum angle the ground can have relative to the players up direction.")]
     public float maxSlopeAngle = 35f;
     private Vector3 crouchScale = new Vector3(1, 0.5f, 1);
     private Vector3 playerScale;
-    [Tooltip("forward force for when a crouch is started.")]
     public float slideForce = 400;
-    [Tooltip("countermovement when sliding. this doesnt work the same way as normal countermovement.")]
-    public float slideCounterMovement = 0.2f;
+    public float slideCounterMovement = 0.175f;
     private bool readyToJump = true;
     private float jumpCooldown = 0.25f;
-    [Tooltip("this determines the jump force but is also applied when jumping off of walls, if you decrease it, you may end up being able to walljump and then get back onto the wall leading to infinite height.")]
     public float jumpForce = 550f;
     float x, y;
     bool jumping;
@@ -49,24 +38,16 @@ public class PlayerMovement : MonoBehaviour
     private float actualWallRotation;
     private float wallRotationVel;
     private Vector3 wallNormalVector;
-    [Tooltip("when wallrunning, an upwards force is constantly applied to negate gravity by about half (at default), increasing this value will lead to more upwards force and decreasing will lead to less upwards force.")]
     public float wallRunGravity = 1;
-    [Tooltip("when a wallrun is started, an upwards force is applied, this describes that force.")]
     public float initialForce = 20f;
-    [Tooltip("float to choose how much force is applied outwards when ending a wallrun. this should always be greater than Jump Force")]
     public float escapeForce = 600f;
     private float wallRunRotation;
-    [Tooltip("how much you want to rotate the camera sideways while wallrunning")]
     public float wallRunRotateAmount = 10f;
-    [Tooltip("a bool to check if the player is wallrunning because thats kinda necessary.")]
     public bool isWallRunning;
-    [Tooltip("a bool to determine whether or not to actually allow wallrunning.")]
     public bool useWallrunning = true;
 
     [Header("Collisions")]
-    [Tooltip("a bool to check if the player is on the ground.")]
     public bool grounded;
-    [Tooltip("a bool to check if the player is currently crouching.")]
     public bool crouching;
     private bool surfing;
     private bool cancellingGrounded;
@@ -79,13 +60,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake()
     {
-
         Instance = this;
 
         rb = GetComponent<Rigidbody>();
 
-        //Create a physic material with no friction to allow for wallrunning and smooth movement not being dependant
-        //and smooth movement not being dependant on the in-built unity physics engine, apart from collisions.
         PhysicMaterial mat = new PhysicMaterial("tempMat");
 
         mat.bounceCombine = PhysicMaterialCombine.Average;
@@ -109,21 +87,28 @@ public class PlayerMovement : MonoBehaviour
         wallNormalVector = Vector3.up;
     }
 
-
     private void FixedUpdate()
     {
+        if (Time.timeScale == 0f)
+            return;
+
         Movement();
     }
 
     private void Update()
     {
+        if (Time.timeScale == 0f)
+            return;
+
         MyInput();
         Look();
     }
 
     private void LateUpdate()
     {
-        //call the wallrunning Function
+        if (Time.timeScale == 0f)
+            return;
+
         WallRunning();
         WallRunRotate();
     }
@@ -136,9 +121,6 @@ public class PlayerMovement : MonoBehaviour
         playerCam.localRotation = Quaternion.Euler(playerCam.rotation.eulerAngles.x, playerCam.rotation.eulerAngles.y, actualWallRotation);
     }
 
-    /// <summary>
-    /// Find user input. Should put this in its own class but im lazy
-    /// </summary>
     private void MyInput()
     {
         x = Input.GetAxisRaw("Horizontal");
@@ -146,7 +128,6 @@ public class PlayerMovement : MonoBehaviour
         jumping = Input.GetButton("Jump");
         crouching = Input.GetKey(KeyCode.LeftControl);
 
-        //Crouching
         if (Input.GetKeyDown(KeyCode.LeftControl))
             StartCrouch();
         if (Input.GetKeyUp(KeyCode.LeftControl))
@@ -174,55 +155,43 @@ public class PlayerMovement : MonoBehaviour
 
     private void Movement()
     {
-        //Extra gravity
         rb.AddForce(Vector3.down * Time.deltaTime * 10);
 
-        // NUEVO: fuerza extra cuando el jugador cae
         if (rb.velocity.y < 0f)
         {
-            rb.AddForce(Vector3.down * Time.deltaTime * 30); // ajusta el 30 a tu gusto
+            rb.AddForce(Vector3.down * Time.deltaTime * 30);
         }
 
-        //Find actual velocity relative to where player is looking
         Vector2 mag = FindVelRelativeToLook();
         float xMag = mag.x, yMag = mag.y;
 
-        //Counteract sliding and sloppy movement
         CounterMovement(x, y, mag);
 
-        //If holding jump && ready to jump, then jump
         if (readyToJump && jumping) Jump(jumpForce);
 
-        //Set max speed
         float maxSpeed = this.maxSpeed;
 
-        //If sliding down a ramp, add force down so player stays grounded and also builds speed
         if (crouching && grounded && readyToJump)
         {
             rb.AddForce(Vector3.down * Time.deltaTime * 3000);
             return;
         }
 
-        //If speed is larger than maxspeed, cancel out the input so you don't go over max speed
         if (x > 0 && xMag > maxSpeed) x = 0;
         if (x < 0 && xMag < -maxSpeed) x = 0;
         if (y > 0 && yMag > maxSpeed) y = 0;
         if (y < 0 && yMag < -maxSpeed) y = 0;
 
-        //Some multipliers
         float multiplier = 1f, multiplierV = 1f;
 
-        // Movement in air
         if (!grounded)
         {
             multiplier = 0.5f;
             multiplierV = 0.5f;
         }
 
-        // Movement while sliding
         if (grounded && crouching) multiplierV = 0f;
 
-        //Apply forces to move player
         rb.AddForce(orientation.transform.forward * y * moveSpeed * Time.deltaTime * multiplier * multiplierV);
         rb.AddForce(orientation.transform.right * x * moveSpeed * Time.deltaTime * multiplier);
     }
@@ -231,7 +200,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if ((grounded || isWallRunning || surfing) && readyToJump)
         {
-            MonoBehaviour.print("jumping");
             Vector3 velocity = rb.velocity;
             readyToJump = false;
             rb.AddForce(Vector2.up * force * 1.5f);
@@ -267,16 +235,13 @@ public class PlayerMovement : MonoBehaviour
         float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.fixedDeltaTime * sensMultiplier;
         float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.fixedDeltaTime * sensMultiplier;
 
-        //Find current look rotation
         Vector3 rot = playerCam.transform.localRotation.eulerAngles;
         desiredX = rot.y + mouseX;
 
-        //Rotate, and also make sure we dont over- or under-rotate.
         xRotation -= mouseY;
         float clamp = 89.5f;
         xRotation = Mathf.Clamp(xRotation, -clamp, clamp);
 
-        //Perform the rotations
         playerCam.transform.localRotation = Quaternion.Euler(xRotation, desiredX, 0);
         orientation.transform.localRotation = Quaternion.Euler(0, desiredX, 0);
     }
@@ -285,14 +250,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!grounded || jumping) return;
 
-        //Slow down sliding
         if (crouching)
         {
             rb.AddForce(moveSpeed * Time.deltaTime * -rb.velocity.normalized * slideCounterMovement);
             return;
         }
 
-        //Counter movement
         if (Math.Abs(mag.x) > threshold && Math.Abs(x) < 0.05f || (mag.x < -threshold && x > 0) || (mag.x > threshold && x < 0))
         {
             rb.AddForce(moveSpeed * orientation.transform.right * Time.deltaTime * -mag.x * counterMovement);
@@ -302,7 +265,6 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(moveSpeed * orientation.transform.forward * Time.deltaTime * -mag.y * counterMovement);
         }
 
-        //Limit diagonal running. This will also cause a full stop if sliding fast and un-crouching, so not optimal.
         if (Mathf.Sqrt((Mathf.Pow(rb.velocity.x, 2) + Mathf.Pow(rb.velocity.z, 2))) > maxSpeed)
         {
             float fallspeed = rb.velocity.y;
@@ -311,11 +273,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Find the velocity relative to where the player is looking
-    /// Useful for vectors calculations regarding movement and limiting movement
-    /// </summary>
-    /// <returns></returns>
     public Vector2 FindVelRelativeToLook()
     {
         float lookAngle = orientation.transform.eulerAngles.y;
@@ -330,7 +287,7 @@ public class PlayerMovement : MonoBehaviour
 
         return new Vector2(xMag, yMag);
     }
-    //a lot of math (dont touch)
+
     private void FindWallRunRotation()
     {
 
@@ -407,9 +364,6 @@ public class PlayerMovement : MonoBehaviour
         return v.y == -1f;
     }
 
-    /// <summary>
-    /// Handle ground detection
-    /// </summary>
     private void OnCollisionStay(Collision other)
     {
         int layer = other.gameObject.layer;
@@ -431,7 +385,7 @@ public class PlayerMovement : MonoBehaviour
                 cancellingGrounded = false;
                 CancelInvoke("StopGrounded");
             }
-            if (IsWall(normal) && (layer == (int)whatIsGround || (int)whatIsGround == -1 || layer == LayerMask.NameToLayer("Ground") || layer == LayerMask.NameToLayer("ground"))) //seriously what is this
+            if (IsWall(normal) && (layer == (int)whatIsGround || (int)whatIsGround == -1 || layer == LayerMask.NameToLayer("Ground") || layer == LayerMask.NameToLayer("ground")))
             {
                 StartWallRun(normal);
                 onWall = true;
@@ -480,11 +434,8 @@ public class PlayerMovement : MonoBehaviour
         surfing = false;
     }
 
-    //wallrunning functions
     private void CancelWallrun()
     {
-        //for when we want to stop wallrunning
-        MonoBehaviour.print("cancelled wallrun");
         Invoke("GetReadyToWallrun", 0.1f);
         rb.AddForce(wallNormalVector * escapeForce);
         isWallRunning = false;
@@ -492,8 +443,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void StartWallRun(Vector3 normal)
     {
-        MonoBehaviour.print("wallrunning");
-        //cancels all y momentum and then applies an upwards force.
         if (!grounded && useWallrunning)
         {
             wallNormalVector = normal;
@@ -508,8 +457,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void WallRunning()
     {
-        //checks if the wallrunning bool is set to true and if it is then applies
-        //a force to counter gravity enough to make it feel like wallrunning
         if (isWallRunning)
         {
             rb.AddForce(-wallNormalVector * Time.deltaTime * moveSpeed);

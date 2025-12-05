@@ -20,6 +20,7 @@ public class BossManagerScript : MonoBehaviour
     public int vida = 500;
     public Rigidbody rb;
     public bool grounded = false;
+    public GameObject te;
 
     void Awake()
     {
@@ -33,7 +34,7 @@ public class BossManagerScript : MonoBehaviour
     {
         if (agent.enabled == true)
         {
-            
+
             agent.destination = targetTR.position;
             anim.SetFloat("speed", agent.velocity.magnitude);
 
@@ -57,14 +58,23 @@ public class BossManagerScript : MonoBehaviour
                 Debug.Log(vida);
             }
         }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            vida = 0;
+        }
 
+        if (vida<= 0)
+        {
+            Instantiate(te);
+            Destroy(gameObject);
+        }
     }
 
     void FixedUpdate()
     {
         cuenta += 1;
         cuenta2 += 1;
-        if (agent.enabled == false) 
+        if (agent.enabled == false)
         {
             cuenta3 += 1;
         }
@@ -76,5 +86,19 @@ public class BossManagerScript : MonoBehaviour
             cuenta3 = 0;
         }
     }
+
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("granadaArea"))
+        {
+            vida -= 30;
+        }
+        else if (collision.gameObject.CompareTag("misilArea"))
+        {
+            vida -= 100;
+        }
+    }
+
 
 }

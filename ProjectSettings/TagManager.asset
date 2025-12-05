@@ -8,6 +8,13 @@ TagManager:
   - bala
   - jefe
   - timer
+  - bala enemiga
+  - misilArea
+  - granadaArea
+  - dieOnMenu
+  - tiempoFinal
+  - te
+  - winScreen
   layers:
   - Default
   - TransparentFX
