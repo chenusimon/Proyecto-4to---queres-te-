@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class AgentManager : MonoBehaviour
 {
-    public EnemyShoot enemyShoot;
+    public EnemyShoot GunDirection;
     [SerializeField] NavMeshAgent agent;
     public Transform targetTR;
     [SerializeField] Animator anim;
@@ -13,76 +13,81 @@ public class AgentManager : MonoBehaviour
     public float lookAngleX;
     int cuenta = 0;
     int cuenta2 = 0;
-    public bool activated = false;
+    int cuenta3 = 0;
+    public int vida = 1;
     public Rigidbody rb;
+    public bool grounded = false;
+    public bool activated = false;
+    float xRotation;
+    float yRotation;
 
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponentInChildren<Animator>();
         agent.updateRotation = false;
-
-
-        agent.enabled = false;
-
-            
+        targetTR = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()
     {
-        if (agent.enabled == true)
+        if (activated)
         {
-            agent.destination = targetTR.position;
-            anim.SetFloat("speed", agent.velocity.magnitude);
-
-            Vector3 direction = (targetTR.position - transform.position).normalized;
-
-            if (direction.sqrMagnitude > 0.001f)
+            if (agent.enabled == true)
             {
-                Quaternion lookRotation = Quaternion.LookRotation(direction);
-                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 10f);
 
-                lookAngleY = lookRotation.eulerAngles.y;
-                lookAngleX = lookRotation.eulerAngles.x;
+                agent.destination = targetTR.position;
+                anim.SetFloat("speed", agent.velocity.magnitude);
+
+                Vector3 direction = (targetTR.position - transform.position).normalized;
+
+                if (direction.sqrMagnitude > 0.001f)
+                {
+                    Quaternion lookRotation = Quaternion.LookRotation(direction);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 10f);
+                }
+
+                if (cuenta2 >= 100)
+                {
+                    GunDirection.Shoot(xRotation, yRotation);
+                    cuenta2 = 0;
+                    Debug.Log(vida);
+                }
             }
-            if (cuenta >= 50)
-            {
-                Disparar();
-                cuenta = 0;
-            }
+            xRotation = transform.eulerAngles.x;
+            yRotation = transform.eulerAngles.y;
         }
     }
 
     void FixedUpdate()
     {
-        cuenta = cuenta + 1;
-        if (activated && agent.enabled == false)
+        cuenta += 1;
+        cuenta2 += 1;
+        if (agent.enabled == false)
         {
-            cuenta2 += 1;
-                if (cuenta < 250) 
-                {
-                    agent.enabled = true;
-                    rb.isKinematic = true;
-                cuenta2 = 0;
-                }
+            cuenta3 += 1;
+        }
+
+        if (cuenta3 >= 100 && grounded)
+        {
+            agent.enabled = true;
+            rb.isKinematic = true;
+            cuenta3 = 0;
         }
     }
 
-    void Disparar()
-    {
-        enemyShoot.Shoot(lookAngleX, lookAngleY, 1);
-    }
 
-    public void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("bala"))
+        if (collision.gameObject.CompareTag("granadaArea")|| collision.gameObject.CompareTag("misilArea")|| collision.gameObject.CompareTag("bala"))
         {
             Destroy(gameObject);
         }
     }
+
     public void activate()
     {
-        agent.enabled = true;
         activated = true;
+        agent.enabled = true;
     }
 }

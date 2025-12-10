@@ -10,7 +10,7 @@ public class EnemyShoot : MonoBehaviour
     public Transform orientation;
     public AgentManager agentManager;
 
-    public void Shoot(float xRotation, float yRotation, int arma)
+    public void Shoot(float xRotation, float yRotation)
     {
 
         Quaternion rotacion = Quaternion.Euler(xRotation, yRotation, 0);

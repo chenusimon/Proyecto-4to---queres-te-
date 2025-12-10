@@ -163,6 +163,7 @@ GameObject:
   - component: {fileID: 8358763157458967394}
   - component: {fileID: 8358763157458967453}
   - component: {fileID: 8358763157458967452}
+  - component: {fileID: 646800444}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -294,6 +295,20 @@ MonoBehaviour:
   useWallrunning: 1
   grounded: 0
   crouching: 0
+--- !u!114 &646800444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8358763157458967454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 041b1bb78df29d54c81aee19f3fe450b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathScreen: {fileID: 0}
+  winScreen: {fileID: 0}
 --- !u!1 &8358763157628495532
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,7 +654,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 1d717f53dace1d0439657a22ca1b114d, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d717f53dace1d0439657a22ca1b114d, type: 3}

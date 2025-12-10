@@ -32,6 +32,6 @@ public class GunDirection : MonoBehaviour
     }
     public void Shoot()
     {
-        shoot.Shoot(lookAngleX, (lookAngleY), 1);
+        shoot.Shoot(lookAngleX, (lookAngleY));
     }
 }
