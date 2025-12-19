@@ -12,7 +12,7 @@ public class granadaArea : MonoBehaviour
             BossManagerScript = collision.gameObject.GetComponent<BossManagerScript>();
             BossManagerScript.vida += -30;
         }
-        else if (collision.gameObject.CompareTag("enemigo")) ;
+        else if (collision.gameObject.CompareTag("enemigo"))
         {
             Destroy(collision.gameObject);
         }

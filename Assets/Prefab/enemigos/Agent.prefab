@@ -58,9 +58,9 @@ SphereCollider:
   m_GameObject: {fileID: 1457489260}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Radius: 20
+  m_Radius: 30
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7436583262460779369
 GameObject:
@@ -193,14 +193,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2de1c687559fb8b4db8b571f2ef19a7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyShoot: {fileID: 1949223743}
+  GunDirection: {fileID: 1949223743}
   agent: {fileID: 7436583262460779371}
   targetTR: {fileID: 0}
   anim: {fileID: 7436583262666942928}
   lookAngleY: 0
   lookAngleX: 0
-  activated: 0
+  vida: 1
   rb: {fileID: 1979031129}
+  grounded: 0
+  activated: 0
 --- !u!54 &1979031129
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -217,6 +219,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &483812064
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7436583262659648100}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 2.5, z: 1.5}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &7436583262659550384
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -286,6 +301,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fb269cac241226408bf2d63c2dbe471, type: 3}
+--- !u!1 &7436583262659648100 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100052, guid: 3fb269cac241226408bf2d63c2dbe471,
+    type: 3}
+  m_PrefabInstance: {fileID: 7436583262659550384}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7436583262659937796 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400052, guid: 3fb269cac241226408bf2d63c2dbe471,

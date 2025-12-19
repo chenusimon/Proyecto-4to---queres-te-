@@ -1,0 +1,317 @@
+fileFormatVersion: 2
+guid: bac42233b0f983f4f8d81642a164a9b8
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: antebrazoDerecho
+    100004: antebrazoIzquierdo
+    100006: brazoIzoDerecho
+    100008: brazoIzquierdo
+    100010: cabeza
+    100012: Cube.001
+    100014: cuerpoSexy
+    100016: mixamorig:Head
+    100018: mixamorig:HeadTop_End
+    100020: mixamorig:Hips
+    100022: mixamorig:LeftArm
+    100024: mixamorig:LeftFoot
+    100026: mixamorig:LeftForeArm
+    100028: mixamorig:LeftHand
+    100030: mixamorig:LeftLeg
+    100032: mixamorig:LeftShoulder
+    100034: mixamorig:LeftToe_End
+    100036: mixamorig:LeftToeBase
+    100038: mixamorig:LeftUpLeg
+    100040: mixamorig:Neck
+    100042: mixamorig:RightArm
+    100044: mixamorig:RightFoot
+    100046: mixamorig:RightForeArm
+    100048: mixamorig:RightHand
+    100050: mixamorig:RightLeg
+    100052: mixamorig:RightShoulder
+    100054: mixamorig:RightToe_End
+    100056: mixamorig:RightToeBase
+    100058: mixamorig:RightUpLeg
+    100060: mixamorig:Spine
+    100062: mixamorig:Spine1
+    100064: mixamorig:Spine2
+    100066: musloDerecho
+    100068: musloIzquierdo
+    100070: pataDerecha
+    100072: pataIzquierda
+    100074: sombrerito
+    400000: //RootNode
+    400002: antebrazoDerecho
+    400004: antebrazoIzquierdo
+    400006: brazoIzoDerecho
+    400008: brazoIzquierdo
+    400010: cabeza
+    400012: Cube.001
+    400014: cuerpoSexy
+    400016: mixamorig:Head
+    400018: mixamorig:HeadTop_End
+    400020: mixamorig:Hips
+    400022: mixamorig:LeftArm
+    400024: mixamorig:LeftFoot
+    400026: mixamorig:LeftForeArm
+    400028: mixamorig:LeftHand
+    400030: mixamorig:LeftLeg
+    400032: mixamorig:LeftShoulder
+    400034: mixamorig:LeftToe_End
+    400036: mixamorig:LeftToeBase
+    400038: mixamorig:LeftUpLeg
+    400040: mixamorig:Neck
+    400042: mixamorig:RightArm
+    400044: mixamorig:RightFoot
+    400046: mixamorig:RightForeArm
+    400048: mixamorig:RightHand
+    400050: mixamorig:RightLeg
+    400052: mixamorig:RightShoulder
+    400054: mixamorig:RightToe_End
+    400056: mixamorig:RightToeBase
+    400058: mixamorig:RightUpLeg
+    400060: mixamorig:Spine
+    400062: mixamorig:Spine1
+    400064: mixamorig:Spine2
+    400066: musloDerecho
+    400068: musloIzquierdo
+    400070: pataDerecha
+    400072: pataIzquierda
+    400074: sombrerito
+    2100000: Material.002
+    2100002: PLACA
+    2100004: corrugado
+    2100006: Material
+    2100008: chapaNegra
+    2100010: metal
+    2100012: Material.001
+    2100014: telaNegra
+    2100016: telaRoja
+    2100018: ColorCuerpo
+    2100020: ColorCorredera
+    2100022: "colorCa\xF1on"
+    2100024: rojo
+    4300000: cuerpoSexy
+    4300002: cabeza
+    4300004: brazoIzquierdo
+    4300006: musloIzquierdo
+    4300008: musloDerecho
+    4300010: pataIzquierda
+    4300012: pataDerecha
+    4300014: antebrazoIzquierdo
+    4300016: brazoIzoDerecho
+    4300018: antebrazoDerecho
+    4300020: sombrerito
+    4300022: Cube.001
+    7400000: mixamo.com
+    9500000: //RootNode
+    13700000: antebrazoDerecho
+    13700002: antebrazoIzquierdo
+    13700004: brazoIzoDerecho
+    13700006: brazoIzquierdo
+    13700008: cabeza
+    13700010: Cube.001
+    13700012: cuerpoSexy
+    13700014: musloDerecho
+    13700016: musloIzquierdo
+    13700018: pataDerecha
+    13700020: pataIzquierda
+    13700022: sombrerito
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ColorCorredera
+    second: {fileID: 2100000, guid: 18a7dc4b94210f84b8d2f6ff0bd481f9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ColorCuerpo
+    second: {fileID: 2100000, guid: 8ec8b09c4b4f34045b572267d3face17, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 81824ce13d46d4a4da67494600a976e4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 104bdf6105bb8a44ab59ec4274662b9f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: 58725a9fc495bfd47ba8f410b585084d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PLACA
+    second: {fileID: 2100000, guid: 4a7364aa136310145b75b3ebb7ae22bb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: chapaNegra
+    second: {fileID: 2100000, guid: 0cb428787848737429dd6d79049beb68, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "colorCa\xF1on"
+    second: {fileID: 2100000, guid: 51056efdaa5c56949a08754127c6438b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: corrugado
+    second: {fileID: 2100000, guid: e5a7cbd4a1f1f5e4b84ce016681868bb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal
+    second: {fileID: 2100000, guid: a0d6be9621767424a9805068c0c6d98f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: rojo
+    second: {fileID: 2100000, guid: c8155a3a24f801040b9546e1cce8bcab, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: telaNegra
+    second: {fileID: 2100000, guid: 67a4adcb257955346aeeda1f65336918, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: telaRoja
+    second: {fileID: 2100000, guid: 02f907a8d6a05184eb20d207a6568407, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: PLACA
+    second: {fileID: 2800000, guid: 8d7adeef0ba4e3d4a84317b40282230e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: chapaNegra
+    second: {fileID: 2800000, guid: 3edd9abc94ea2574dbdb8114843c80fb, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: corrugado2
+    second: {fileID: 2800000, guid: f4aa0b723f08ba6488d6f78ca51224a1, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: descarga
+    second: {fileID: 2800000, guid: 78aa59abdc08b134293beb4a9a3463f0, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: metal
+    second: {fileID: 2800000, guid: b1bf63f2a5852a0409c067738a0d0ff1, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: metal2
+    second: {fileID: 2800000, guid: d5c434f8aa05a8e44aa3c80cc17149f5, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: relaroja
+    second: {fileID: 2800000, guid: 19aa45a6dc6f9a649848b6c6dc67b6f2, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: rusty_metal_03_diff_4k
+    second: {fileID: 2800000, guid: 482b04710c2c47e40b298bc390fa57ba, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: telanegra
+    second: {fileID: 2800000, guid: e37517a83a7413245ac9afb6475def65, type: 3}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

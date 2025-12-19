@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/boss scene.unity
     guid: 02ea21788b889e449a360f7805de58db
+  - enabled: 1
+    path: Assets/Scenes/SampleScene.unity
+    guid: 577b0baa13d5dd547b0daf5f9729f73b
   m_configObjects: {}
